@@ -19,7 +19,7 @@ const reverseTwo = (str) => {
 };
 
 const reverseThree = (str) => {
-    
+
     // reduce args = acc / currentval / currentindex / array
 
     // str.split('').reduce((reversed, character) => {
