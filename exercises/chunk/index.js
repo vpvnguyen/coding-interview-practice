@@ -16,7 +16,7 @@
 // -- push a new chunk into 'chunked' with the current element
 // - else, add the current element into the chunk
 
-// solution one
+// solution 1 - iterate through array
 function chunk(array, size) {
   // array to hold all chunks of data
   const chunked = [];
@@ -39,4 +39,26 @@ function chunk(array, size) {
   return chunked;
 }
 
+
+// solution 2 - slice
+const chunkTwo = (array, size) => {
+    // create empty array to hold chunks
+    const chunked = [];
+
+    // set position of index each time we iterate through array
+    let index = 0;
+
+    // while - index position is less than the array length,
+    // push the index position compared to the index position + chunk size (to get to chunk position)
+    // add size to index to make a new index position after iteration
+    while (index < array.length) {
+        chunked.push(array.slice(index, index + size));
+        index += size;
+    }
+
+    return chunked;
+};
+
 module.exports = chunk;
+
+module.exports = chunkTwo;
