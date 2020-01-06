@@ -9,6 +9,7 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True (punctuation should not affect anagram)
 //   anagrams('Hi there', 'Bye there') --> False
 
+// NOTES ======================================================
 // regex - regular expressions
 const words = "HI THERE!!!!!";
 // replace special characters using regex \w
@@ -25,6 +26,7 @@ const object = {
 const getKeys = Object.keys(object).length;
 console.log(getKeys);
 
+// SOLUTION 1 ==================================================
 // character maps
 // if we build a character map of hello, we will have the same map as if all the words were scrambled
 const stringA = 'hello';
@@ -66,3 +68,24 @@ const anagram = (stringA, stringB) => {
 };
 
 console.log(anagram(stringA, stringB));
+
+
+// SOLUTION 2 ==================================================
+// create array 
+const numbers = [10, 20, 5, -90, 1];
+const sortedNums = numbers.sort();
+console.log(sortedNums); // [-90, 1, 5, 10, 20]
+
+// sort method can be used with characters as well
+const characters = ['z', 'c', 'b', 'a'];
+const sortedChars = characters.sort();
+
+// solve anagram using sort. start by helper function
+const cleanStr = str => {
+    return str.replace(/[^\w]/g, '')/toLowerCase().split('').sort().join('');
+};
+
+console.log(cleanStr(stringA));
+console.log(cleanStr(stringB));
+
+const anagramTwo = (stringA, stringB) => {};
