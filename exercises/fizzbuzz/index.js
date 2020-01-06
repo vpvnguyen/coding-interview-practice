@@ -13,6 +13,7 @@
 //   buzz
 
 function fizzBuzz(n) {
+    // starting from 1 to n; index should start at 1
     for (let i = 1; i <= n; i++) {
         // is the number a multiple of 3 and 5?
         if (i % 3 === 0 && i % 5 === 0) {
