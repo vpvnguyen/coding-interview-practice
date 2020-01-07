@@ -8,6 +8,7 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+// SOLUTION 1 - create a character map and check if each character matches the keys in the map
 function anagrams(stringA, stringB) {
     // use helper function and build a map for each string
     const charMapA = buildCharMap(stringA);
@@ -40,5 +41,17 @@ const buildCharMap = str => {
     return charMap;
 };
 
+// SOLUTION 2 - create a function to clean up the string and sort it; compare both strings after passing through function
+const anagramsTwo = (stringA, stringB) => {
+    return cleanStr(stringA) === cleanStr(stringB);
+};
+
+// helper function to clean string using regex and sort method
+const cleanStr = string => {
+    return string.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+};
+
 module.exports = anagrams;
+
+module.exports = anagramsTwo;
 
