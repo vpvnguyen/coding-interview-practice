@@ -23,8 +23,10 @@ const object = {
     c: 3,
 };
 
-const getKeys = Object.keys(object).length;
+const getKeys = Object.keys(object);
+const getKeysLength = Object.keys(object).length;
 console.log(getKeys);
+console.log(getKeysLength);
 
 // SOLUTION 1 ==================================================
 // character maps
@@ -32,7 +34,6 @@ console.log(getKeys);
 const stringA = 'hello';
 const stringB = 'olleh';
 
-// solution
 // can build 2 for loops for stringA and stringB but you can also write a helper function to build a character map
 const buildCharMap = str => {
     const charMap = {};
@@ -69,9 +70,8 @@ const anagram = (stringA, stringB) => {
 
 console.log(anagram(stringA, stringB));
 
-
 // SOLUTION 2 ==================================================
-// create array 
+// sort() - js runtime will try it's best to figure out the best way to sort
 const numbers = [10, 20, 5, -90, 1];
 const sortedNums = numbers.sort();
 console.log(sortedNums); // [-90, 1, 5, 10, 20]
@@ -80,12 +80,20 @@ console.log(sortedNums); // [-90, 1, 5, 10, 20]
 const characters = ['z', 'c', 'b', 'a'];
 const sortedChars = characters.sort();
 
-// solve anagram using sort. start by helper function
+// solve anagram using sort. start by creating a helper function to clean string
 const cleanStr = str => {
-    return str.replace(/[^\w]/g, '')/toLowerCase().split('').sort().join('');
+    // turn into array, sort it, join back together
+    return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 };
 
+console.log(`console.log(cleanStr(stringA));`);
 console.log(cleanStr(stringA));
+console.log(`console.log(cleanStr(stringB));`);
 console.log(cleanStr(stringB));
 
-const anagramTwo = (stringA, stringB) => {};
+// since we can clean both strings using the helper function, you can compare them together and get whether its an anagram or not
+const anagramTwo = (stringA, stringB) => {
+    return cleanStr(stringA) === cleanStr(stringB);
+};
+
+console.log(anagramTwo(stringA, stringB));
