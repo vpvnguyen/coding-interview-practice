@@ -20,6 +20,7 @@ function anagrams(stringA, stringB) {
     console.log(`charMapA ${charMapA}`);
     console.log(`charMapB ${charMapA}`);
 
+    // first, check if the length is equal. if it is not equal, we already know that it cannot be an anagram
     if (Object.keys(charMapA).length !== Object.keys(charMapB).length) {
         return false;
     }
@@ -59,13 +60,20 @@ const buildCharMap = str => {
 
 // SOLUTION 2 - create a function to clean up the string and sort it; compare both strings after passing through function
 const anagramsTwo = (stringA, stringB) => {
+    console.log(`\nanagrams2`);
+    console.log(`cleanStr(stringA): ${cleanStr(stringA)}`);
+    console.log(`cleanStr(stringB): ${cleanStr(stringB)}`);
+
     return cleanStr(stringA) === cleanStr(stringB);
 };
 
 // helper function to clean string using regex and sort method
 const cleanStr = string => {
+    console.log(`\ncleanStr`);
     return string.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 };
 
 anagrams(string1, string2);
+
+console.log(anagramsTwo(string1, string2))
 
