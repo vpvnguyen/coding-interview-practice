@@ -39,10 +39,56 @@ const same = (arr1, arr2) => {
   }
 
   // all checks passed. return true since after squaring array1 and comparing to array2 is the same.
-  console.log("Arrays are the same after squaring the values of arr1. TRUE.");
+  console.log('Arrays are the same after squaring the values of arr1. TRUE.');
   return true;
 };
 
 same([1, 2, 3], [4, 1]); // false - fails on length check
 same([1, 2, 3], [4, 1, 5]); // false - fails on index check
 same([1, 2, 3], [4, 1, 9]); // true
+
+console.log('\n ================ \n');
+
+// refactored solution with time complexity of O(n)
+const same2 = (arr1, arr2) => {
+    // compare lengths of arrays. if mismatch, return false\
+    if (arr1.length !== arr2.length) {
+        console.log(`arr1 length: ${arr1.length}`);
+        console.log(`arr2 length: ${arr2.length}`);
+        console.log('Lengths are not equal. return FALSE');
+        return false;
+    }
+
+
+    // create objects for values of both arrays
+    const frequencyCounter1 = {};
+    const frequencyCounter2 = {};
+
+    // loop through arr1 and set frequency of each value of the array
+    for (let val of arr1) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+    }
+
+    for (let val of arr2) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    }
+
+    for (let key in frequencyCounter1) {
+        if (!(key ** 2 in frequencyCounter2)) {
+            console.log('value squared of arr1 does not match in arr2. return FALSE');
+            return false;
+        }
+
+        if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+            console.log('value squared of arr2 does not match in arr1. return FALSE');
+            return false;
+        }
+    }
+
+    console.log('Arrays are the same after squaring the values of arr1. TRUE.');
+    return true;
+};
+
+same2([1, 2, 3], [4, 1]); // false - fails on length check
+same2([1, 2, 3], [4, 1, 5]); // false - fails on index check
+same2([1, 2, 3], [4, 1, 9]); // true
