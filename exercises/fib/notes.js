@@ -56,6 +56,32 @@ function fib5(number) {
   return fib5(number - 1) + fib5(number - 2);
 }
 
+// Hash and look up.
+function fibonacci(number) {
+  var sequence = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  var numberZeroBased = number - 1;
+
+  if (numberZeroBased > sequence.length)
+    throw new Error("The number you provided is outside of the range");
+
+  return sequence[numberZeroBased];
+}
+
+// generators
+function* fibonacci(number) {
+  var previous_first = 0,
+    previous_second = 1,
+    next = 1;
+
+  while (true) {
+    next = previous_first + previous_second;
+    previous_first = previous_second;
+    previous_second = next;
+
+    yield next;
+  }
+}
+
 console.log(fib(8));
 console.log(fib2(8));
 console.log(fib3(8));
