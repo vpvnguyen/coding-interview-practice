@@ -11,8 +11,6 @@ const fib = n => {
   return s;
 };
 
-console.log(fib(8));
-
 // another way using recursion
 function fib2(n) {
   if (n == 1) return [0, 1];
@@ -23,4 +21,43 @@ function fib2(n) {
   return arr;
 }
 
+// only print the number in the squence
+// Simple iteration
+function fib3(number) {
+  var previous_first = 0,
+    previous_second = 1,
+    next = 1;
+
+  for (var i = 2; i <= number; i++) {
+    next = previous_first + previous_second;
+    previous_first = previous_second;
+    previous_second = next;
+  }
+  return next;
+}
+
+// Loop and array
+function fib4(number) {
+  var sequence = [1, 1];
+
+  for (var i = 2; i < number; i++) {
+    sequence[i] = sequence[i - 1] + sequence[i - 2];
+  }
+
+  return sequence[number - 1];
+}
+
+// Recursion
+function fib5(number) {
+  if (number < 1) return 0;
+
+  if (number <= 2) return 1;
+
+  return fib5(number - 1) + fib5(number - 2);
+}
+
+console.log(fib(8));
 console.log(fib2(8));
+console.log(fib3(8));
+console.log(fib4(8));
+console.log(fib5(8));
