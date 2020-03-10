@@ -57,7 +57,7 @@ function fib5(number) {
 }
 
 // Hash and look up.
-function fibonacci(number) {
+function fib6(number) {
   var sequence = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
   var numberZeroBased = number - 1;
 
@@ -68,7 +68,7 @@ function fibonacci(number) {
 }
 
 // generators
-function* fibonacci(number) {
+function* fib7(number) {
   var previous_first = 0,
     previous_second = 1,
     next = 1;
@@ -87,3 +87,5 @@ console.log(fib2(8));
 console.log(fib3(8));
 console.log(fib4(8));
 console.log(fib5(8));
+console.log(fib6(8));
+console.log(fib7(8));
