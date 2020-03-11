@@ -27,4 +27,18 @@ const charCount = str => {
   return result;
 };
 
+const charCount2 = str => {
+  const result = {};
+  const arr = str.split("");
+  for (let i = 0; i < arr.length; i++) {
+    if (result[str[i]] > 0) {
+      result[str[i]]++;
+    } else {
+      result[str[i]] = 1;
+    }
+  }
+  return result;
+};
+
 console.log(charCount(str));
+console.log(charCount2(str));
